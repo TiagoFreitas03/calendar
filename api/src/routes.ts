@@ -21,13 +21,9 @@ routes.get('/calendar/:year', (req, res) => {
 	const variableDates = getVariableDates(year)
 
 	dates.push(...variableDates)
+	dates.sort((x, y) => x.month - y.month)
 
-	return res.json({
-		dates,
-		holidays: dates.filter(d => d.type === 'FN').map(d => d.day),
-		celebrations: dates.filter(d => d.type === 'DC').map(d => d.day),
-		others: dates.filter(d => d.type === 'PF').map(d => d.day)
-	})
+	return res.json(dates)
 })
 
 export { routes }
