@@ -15,7 +15,7 @@ export function Header() {
 					fontFamily: FONT_FAMILY.BOLD,
 					fontSize: FONT_SIZE.LG
 				}}>
-					MyCalendar
+					Calendar
 				</Text>
 			</View>
 		</View>
