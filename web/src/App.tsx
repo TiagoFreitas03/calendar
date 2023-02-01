@@ -14,9 +14,8 @@ type ChangeDateOperations = 'DY' | 'DM' | 'IY' | 'IM'
 export function App() {
 	const [date, setDate] = useState(new Date())
 	const [calendar, setCalendar] = useState<SpecialDate[]>([])
-	const [firstGet, setFirstGet] = useState(true)
 
-	useEffect(() => { getCalendar(year) }, [])
+	useEffect(() => { getCalendar(year, true) }, [])
 
 	const [year, month] = [date.getFullYear(), date.getMonth()]
 	const specialDates = calendar.filter(d => d.month === month).sort((x, y) => x.day - y.day)
@@ -25,14 +24,11 @@ export function App() {
 	 * busca as datas especiais por ano
 	 * @param y ano
 	 */
-	async function getCalendar(y: number) {
-		if (y !== year || firstGet) {
+	async function getCalendar(y: number, firstTry: boolean = false) {
+		if (y !== year || firstTry) {
 			const res = await axios.get(`${import.meta.env.VITE_API_URL}/calendar/${y}`)
 			const calendar = res.data as SpecialDate[]
 			setCalendar(calendar)
-
-			if (firstGet)
-				setFirstGet(false)
 		}
 	}
 
