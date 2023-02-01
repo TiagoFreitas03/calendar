@@ -17,7 +17,7 @@ export function getVariableDates(year: number) {
 	/** vetor com todas as datas especiais que dependem da data da páscoa */
 	const aux: VariableSpecialDate[] = [
 		{ date: sub(easter, { days: 47 }), name: 'Carnaval', type: 'PF' },
-		{ date: sub(easter, { days: 46 }), name: 'Cinzas', type: 'DC' },
+		{ date: sub(easter, { days: 46 }), name: 'Cinzas', type: 'PF' },
 		{ date: sub(easter, { days: 7 }), name: 'Domingo de Ramos', type: 'DC' },
 		{ date: sub(easter, { days: 3 }), name: 'Quinta-feira Santa', type: 'DC' },
 		{ date: sub(easter, { days: 2 }), name: 'Sexta-feira Santa', type: 'FN' },
